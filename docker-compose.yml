@@ -1,21 +1,19 @@
-version: "3.9"
-
 services:
   transcription:
     build: .
     ports:
       - "8000:8000"
     environment:
-      - WHISPER_MODEL=base
-      - WHISPER_CPU_THREADS=8
+      - WHISPER_MODEL=tiny
+      - WHISPER_CPU_THREADS=2
     volumes:
       - ./uploads:/app/uploads
       - whisper_cache:/root/.cache/huggingface
     deploy:
       resources:
         limits:
-          cpus: "8"
-          memory: 4G
+          cpus: "2.0"
+          memory: 3G
 
 volumes:
   whisper_cache:
